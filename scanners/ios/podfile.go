@@ -26,13 +26,13 @@ func getTargetDefinitionProjectMap(podfilePth, cocoapodsVersion string) (map[str
 	}
 
 	gemfileContent := fmt.Sprintf(`source 'https://rubygems.org'
-gem 'cocoapods-core'%s
+gem 'cocoapods'%s
 gem 'json'
 `, gemfileCocoapodsVersion)
 
 	// returns target - project map, if xcodeproj defined in the Podfile
 	// return empty string if no xcodeproj defined in the Podfile
-	rubyScriptContent := `require 'cocoapods-core'
+	rubyScriptContent := `require 'cocoapods'
 require 'json'
 
 begin
@@ -109,13 +109,13 @@ func getUserDefinedWorkspaceRelativePath(podfilePth, cocoapodsVersion string) (s
 	}
 
 	gemfileContent := fmt.Sprintf(`source 'https://rubygems.org'
-gem 'cocoapods-core'%s
+gem 'cocoapods'%s
 gem 'json'
 `, gemfileCocoapodsVersion)
 
 	// returns WORKSPACE_NAME.xcworkspace if user defined a workspace name
 	// returns empty struct {}, if no user defined workspace name exists in Podfile
-	rubyScriptContent := `require 'cocoapods-core'
+	rubyScriptContent := `require 'cocoapods'
 require 'json'
 
 begin
